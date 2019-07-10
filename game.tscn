@@ -10,7 +10,7 @@
 extents = Vector2( 369.126, 13.5239 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 14.2799, 37.8375 )
+extents = Vector2( 18.484, 29.762 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -57,11 +57,12 @@ collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="player"]
-position = Vector2( 0.5, 0 )
-scale = Vector2( 1.92857, 2 )
+position = Vector2( 7.00001, -10.3704 )
+scale = Vector2( 2.92857, 3.03704 )
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2( 7, -10 )
 shape = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
