@@ -36,7 +36,6 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 1104, 113 )
 
 [node name="chao" type="StaticBody2D" parent="."]
-editor/display_folded = true
 position = Vector2( 167.37, 479.796 )
 collision_layer = 2
 collision_mask = 0
@@ -58,7 +57,8 @@ collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="player"]
-scale = Vector2( 2, 2 )
+position = Vector2( 0.5, 0 )
+scale = Vector2( 1.92857, 2 )
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
