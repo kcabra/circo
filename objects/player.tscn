@@ -15,8 +15,6 @@
 [ext_resource path="res://assets/walk/12.png" type="Texture" id=13]
 [ext_resource path="res://assets/char.png" type="Texture" id=14]
 
-
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
@@ -34,7 +32,7 @@ animations = [ {
 extents = Vector2( 15, 30 )
 
 [node name="player" type="KinematicBody2D"]
-collision_mask = 2
+collision_layer = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -47,5 +45,5 @@ animation = "still"
 playing = true
 
 [node name="char_collision" type="CollisionShape2D" parent="."]
-position = Vector2( -4, 0 )
+position = Vector2( 1, 0 )
 shape = SubResource( 2 )

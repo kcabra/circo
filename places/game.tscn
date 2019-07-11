@@ -1,41 +1,12 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/bg.png" type="Texture" id=1]
 [ext_resource path="res://assets/circus.png" type="Texture" id=2]
 [ext_resource path="res://assets/map.png" type="Texture" id=3]
-[ext_resource path="res://objects/player.gd" type="Script" id=4]
-[ext_resource path="res://assets/walk/1.png" type="Texture" id=5]
-[ext_resource path="res://assets/walk/2.png" type="Texture" id=6]
-[ext_resource path="res://assets/walk/3.png" type="Texture" id=7]
-[ext_resource path="res://assets/walk/4.png" type="Texture" id=8]
-[ext_resource path="res://assets/walk/5.png" type="Texture" id=9]
-[ext_resource path="res://assets/walk/6.png" type="Texture" id=10]
-[ext_resource path="res://assets/walk/7.png" type="Texture" id=11]
-[ext_resource path="res://assets/walk/8.png" type="Texture" id=12]
-[ext_resource path="res://assets/walk/9.png" type="Texture" id=13]
-[ext_resource path="res://assets/walk/10.png" type="Texture" id=14]
-[ext_resource path="res://assets/walk/11.png" type="Texture" id=15]
-[ext_resource path="res://assets/walk/12.png" type="Texture" id=16]
-[ext_resource path="res://assets/char.png" type="Texture" id=17]
+[ext_resource path="res://objects/player.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 369.126, 13.5239 )
-
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "walk",
-"speed": 12.0
-}, {
-"frames": [ ExtResource( 17 ) ],
-"loop": true,
-"name": "still",
-"speed": 0.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 15, 30 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -62,7 +33,6 @@ region_rect = Rect2( 0, 0, 1104, 113 )
 
 [node name="chao" type="StaticBody2D" parent="."]
 position = Vector2( 167.37, 479.796 )
-collision_layer = 2
 collision_mask = 0
 __meta__ = {
 "_edit_group_": true
@@ -79,21 +49,5 @@ region_rect = Rect2( -1.33266, 0.0738335, 689.785, 52.6523 )
 position = Vector2( 279.149, 37.4783 )
 shape = SubResource( 1 )
 
-[node name="player" type="KinematicBody2D" parent="."]
-position = Vector2( 120.516, 464.603 )
-collision_mask = 2
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="char_sprite" type="AnimatedSprite" parent="player"]
-scale = Vector2( 2.92857, 3.03704 )
-frames = SubResource( 2 )
-animation = "walk"
-frame = 3
-playing = true
-
-[node name="char_collision" type="CollisionShape2D" parent="player"]
-position = Vector2( -4, 0 )
-shape = SubResource( 3 )
+[node name="player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 134.13, 467.707 )
