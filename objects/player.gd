@@ -1,6 +1,9 @@
 extends KinematicBody2D
 
 var move_vec : Vector2
+var face_dir : bool
+const LEFT = true
+const RIGHT = false
 var speed = 200
 var jump = -500
 var gravity = 20
@@ -8,10 +11,10 @@ var gravity = 20
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		move_vec.x = speed
-		$Sprite.flip_h = false
+		face_dir = RIGHT
 	elif Input.is_action_pressed("ui_left"):
 		move_vec.x = -speed
-		$Sprite.flip_h = true
+		face_dir = LEFT
 	else:
 		move_vec.x = 0
 	
@@ -25,14 +28,26 @@ func _physics_process(delta):
 	
 	move_vec = move_and_slide(move_vec, Vector2.UP)
 
+func _process(delta):
+	sprite()
+
+func sprite():
+	var sprite = $char_sprite
+	sprite.flip_h = face_dir
+	if move_vec.x != 0:
+		sprite.animation = "walk"
+	else:
+		sprite.animation = "still"
+	
+
 func spawn_clave():
 	var clave = load("res://clave.tscn").instance()
 	clave.player_pos = self.position
 	clave.position = self.position
 	var target = 0
-	if $Sprite.flip_h:
+	if face_dir == LEFT:
 		target = -300
-	else:
+	elif face_dir == RIGHT:
 		target = 300
 	clave.target_pos = self.position + Vector2(target, 0)
 	clave.height = 200
