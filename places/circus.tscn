@@ -1,0 +1,122 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://assets/circo/sky.png" type="Texture" id=1]
+[ext_resource path="res://assets/circo/circoeetc.png" type="Texture" id=2]
+[ext_resource path="res://assets/circo/entradinea.png" type="Texture" id=3]
+[ext_resource path="res://objects/player.gd" type="Script" id=4]
+[ext_resource path="res://assets/walk/1.png" type="Texture" id=5]
+[ext_resource path="res://assets/walk/2.png" type="Texture" id=6]
+[ext_resource path="res://assets/walk/3.png" type="Texture" id=7]
+[ext_resource path="res://assets/walk/4.png" type="Texture" id=8]
+[ext_resource path="res://assets/walk/5.png" type="Texture" id=9]
+[ext_resource path="res://assets/walk/6.png" type="Texture" id=10]
+[ext_resource path="res://assets/walk/7.png" type="Texture" id=11]
+[ext_resource path="res://assets/walk/8.png" type="Texture" id=12]
+[ext_resource path="res://assets/walk/9.png" type="Texture" id=13]
+[ext_resource path="res://assets/walk/10.png" type="Texture" id=14]
+[ext_resource path="res://assets/walk/11.png" type="Texture" id=15]
+[ext_resource path="res://assets/walk/12.png" type="Texture" id=16]
+[ext_resource path="res://assets/char.png" type="Texture" id=17]
+[ext_resource path="res://objects/camera.gd" type="Script" id=18]
+[ext_resource path="res://assets/circo/grass.png" type="Texture" id=19]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "walk",
+"speed": 12.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "still",
+"speed": 0.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 6, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 290.5, 5.5 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 3, 48 )
+
+[node name="game" type="Node2D"]
+
+[node name="sky" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="circoeetc" type="Sprite" parent="."]
+position = Vector2( 129, 0 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="entradinha" type="StaticBody2D" parent="."]
+editor/display_folded = true
+
+[node name="front" type="Sprite" parent="entradinha"]
+position = Vector2( 82, 5 )
+z_index = 1
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 12, 0, 22, 79 )
+
+[node name="back" type="Sprite" parent="entradinha"]
+position = Vector2( 70, 5 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 12, 79 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entradinha"]
+position = Vector2( 87, 13 )
+shape = SubResource( 2 )
+
+[node name="player" type="KinematicBody2D" parent="."]
+position = Vector2( 112, 71 )
+collision_layer = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="char_sprite" type="AnimatedSprite" parent="player"]
+frames = SubResource( 3 )
+animation = "still"
+playing = true
+
+[node name="char_collision" type="CollisionShape2D" parent="player"]
+position = Vector2( 1, 0 )
+shape = SubResource( 4 )
+
+[node name="camera" type="Node2D" parent="player"]
+position = Vector2( -112, -71 )
+z_index = 5
+z_as_relative = false
+script = ExtResource( 18 )
+
+[node name="chao" type="StaticBody2D" parent="."]
+editor/display_folded = true
+
+[node name="grass" type="Sprite" parent="chao"]
+position = Vector2( 0, 77 )
+texture = ExtResource( 19 )
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chao"]
+position = Vector2( 290.5, 89.5 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="chao"]
+position = Vector2( -3, 47 )
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="chao"]
+position = Vector2( 584, 47 )
+shape = SubResource( 6 )
