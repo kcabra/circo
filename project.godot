@@ -16,8 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="juggling"
-run/main_scene="res://places/dream.tscn"
+run/main_scene="res://places/circus.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=380
+window/size/height=190
+window/size/resizable=false
 
 [importer_defaults]
 
@@ -86,3 +92,8 @@ game_attack={
 2d_physics/layer_1="chão"
 2d_physics/layer_2="player"
 2d_physics/layer_3="clave"
+
+[rendering]
+
+quality/2d/use_pixel_snap=true
+environment/default_clear_color=Color( 0.14902, 0.14902, 0.14902, 1 )

@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 var move_vec : Vector2
-var speed = 200
-var jump = -500
-var gravity = 20
+var speed = 100
+var jump = -220
+var gravity = 10
 var timer_gnd = 0
 var timer_but = 0
 
@@ -68,13 +68,13 @@ func spawn_clave():
 	var height
 	if Input.is_action_pressed("game_up"):
 		distance = 0
-		height = 300
+		height = 150
 	else:
-		height = 200
+		height = 100
 		if face_dir == LEFT:
-			distance = -300
+			distance = -150
 		else:
-			distance = 300
+			distance = 150
 	clave.distance = distance
 	clave.height = height
 	clave.speed = 1.0
